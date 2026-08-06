@@ -1,0 +1,28 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        # time complexity: O(n)
+        # space complexity: O(1)
+        # two pointer approach one pointer starting at the front the other at the back
+        # an outer loop goes on while the front pointer is less than the back one
+        # while the character for both the pointers is not a alphanumeric character move the pointers (front++ and back--)
+        # if value of front pointer is not equal to value of back pointer return False
+        # otherwise carry on untit front > back
+        # if front is equal to back do not need to check character because must be the same that is why the conditions for the loops are front < back
+
+        front = 0
+        back = len(s) - 1
+
+        while front < back:
+            while not s[front].isalnum() and front < back:
+                front += 1
+            
+            while not s[back].isalnum() and front < back:
+                back -= 1
+            
+            if s[front].lower() != s[back].lower():
+                return False
+            
+            front += 1
+            back -= 1
+        
+        return True
